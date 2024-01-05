@@ -1,0 +1,24 @@
+class Solution {
+public:
+int maxProfit(vector<int>& prices) {
+        int min=prices[0];
+        int profit = 0;
+        int op = 0;
+        for(auto x:prices){
+            if(x < min){
+                min = x;
+                if(op<profit){
+                    op=profit;
+                }
+                profit = 0;
+            }
+            else if(profit < (x-min)){
+                profit = x-min;
+            }
+        }
+        if(op<profit){
+            op=profit;
+        }
+        return op;
+    }
+};
